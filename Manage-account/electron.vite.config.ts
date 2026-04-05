@@ -3,8 +3,20 @@ import { defineConfig } from 'electron-vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
-  main: {},
-  preload: {},
+  main: {
+    build: {
+      rollupOptions: {
+        external: ['electron', 'path', 'fs', 'os', 'crypto', 'stream', 'util', 'url', 'net', 'tls', 'http', 'https', 'zlib', 'events', 'buffer']
+      }
+    }
+  },
+  preload: {
+    build: {
+      rollupOptions: {
+        external: ['electron', 'path', 'fs', 'os', 'crypto', 'stream', 'util', 'url', 'net', 'tls', 'http', 'https', 'zlib', 'events', 'buffer']
+      }
+    }
+  },
   renderer: {
     resolve: {
       alias: {

@@ -8,16 +8,16 @@ This is an Electron desktop application built with React and TypeScript, using e
 
 ## Development Commands
 
-- `npm run dev` - Start development server with hot reload
-- `npm run build` - Build for production (runs typecheck first)
-- `npm run typecheck` - Run TypeScript type checking for both node and web
-- `npm run typecheck:node` - Type check main/preload processes only
-- `npm run typecheck:web` - Type check renderer process only
-- `npm run lint` - Run ESLint
-- `npm run format` - Format code with Prettier
-- `npm run build:win` - Build Windows installer
-- `npm run build:mac` - Build macOS app
-- `npm run build:linux` - Build Linux packages (AppImage, snap, deb)
+- `yarn run dev` - Start development server with hot reload
+- `yarn run build` - Build for production (runs typecheck first)
+- `yarn run typecheck` - Run TypeScript type checking for both node and web
+- `yarn run typecheck:node` - Type check main/preload processes only
+- `yarn run typecheck:web` - Type check renderer process only
+- `yarn run lint` - Run ESLint
+- `yarn run format` - Format code with Prettier
+- `yarn run build:win` - Build Windows installer
+- `yarn run build:mac` - Build macOS app
+- `yarn run build:linux` - Build Linux packages (AppImage, snap, deb)
 
 ## Architecture
 
@@ -32,6 +32,7 @@ The app follows Electron's three-process architecture:
 ### Build System
 
 Uses **electron-vite** with separate configurations for each process:
+
 - Main process: Node.js environment
 - Preload script: Node.js environment
 - Renderer: Vite with React plugin, supports `@renderer` alias for `src/renderer/src`
@@ -39,6 +40,7 @@ Uses **electron-vite** with separate configurations for each process:
 ### TypeScript Configuration
 
 Three separate tsconfig files:
+
 - `tsconfig.node.json` - Main and preload processes (Node.js types)
 - `tsconfig.web.json` - Renderer process (DOM types)
 - `tsconfig.json` - Base configuration
