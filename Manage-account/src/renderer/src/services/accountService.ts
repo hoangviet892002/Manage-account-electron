@@ -69,13 +69,15 @@ export class AccountService {
     const index = this.accounts.findIndex(account => account.id === id)
     if (index === -1) return null
 
-    this.accounts[index] = {
+    const updatedAccount = {
       ...this.accounts[index],
       ...updates,
       updatedAt: new Date().toISOString()
-    }
+    } as Account
+
+    this.accounts[index] = updatedAccount
     await this.saveAccounts()
-    return this.accounts[index]
+    return updatedAccount
   }
 
   async deleteAccount(id: string): Promise<boolean> {

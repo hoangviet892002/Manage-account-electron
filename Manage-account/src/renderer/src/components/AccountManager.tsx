@@ -46,23 +46,23 @@ const resourceOptions = [
   { label: 'Other', value: 'Other' }
 ]
 
-const statusOptions = [
-  { label: 'Active', value: 'active' },
-  { label: 'Inactive', value: 'inactive' },
-  { label: 'Pending', value: 'pending' }
-]
+// const statusOptions = [
+//   { label: 'Active', value: 'active' },
+//   { label: 'Inactive', value: 'inactive' },
+//   { label: 'Pending', value: 'pending' }
+// ]
 
-const accountTypeOptions = [
-  { label: 'Basic', value: AccountType.BASIC },
-  { label: 'VPS/Server', value: AccountType.VPS },
-  { label: 'Web Account', value: AccountType.WEB },
-  { label: 'Database', value: AccountType.DATABASE },
-  { label: 'API', value: AccountType.API },
-  { label: 'SSH', value: AccountType.SSH },
-  { label: 'Email', value: AccountType.EMAIL },
-  { label: 'Social', value: AccountType.SOCIAL },
-  { label: 'Custom', value: AccountType.CUSTOM }
-]
+// const accountTypeOptions = [
+//   { label: 'Basic', value: AccountType.BASIC },
+//   { label: 'VPS/Server', value: AccountType.VPS },
+//   { label: 'Web Account', value: AccountType.WEB },
+//   { label: 'Database', value: AccountType.DATABASE },
+//   { label: 'API', value: AccountType.API },
+//   { label: 'SSH', value: AccountType.SSH },
+//   { label: 'Email', value: AccountType.EMAIL },
+//   { label: 'Social', value: AccountType.SOCIAL },
+//   { label: 'Custom', value: AccountType.CUSTOM }
+// ]
 
 const protocolOptions = [
   { label: 'SSH', value: 'ssh' },
@@ -287,7 +287,9 @@ const AccountManager: React.FC = () => {
       if (editingAccountId) {
         const updatedAccount = await accountService.updateAccount(editingAccountId, baseAccount)
         if (updatedAccount) {
-          setAccounts((prev) => prev.map((acc) => (acc.id === editingAccountId ? updatedAccount : acc)))
+          setAccounts((prev) =>
+            prev.map((acc) => (acc.id === editingAccountId ? updatedAccount : acc))
+          )
           message.success('Account updated successfully')
         } else {
           message.error('Failed to update account')
@@ -568,11 +570,7 @@ const AccountManager: React.FC = () => {
       render: (_, record) => (
         <Space size="small">
           <Tooltip title="Edit account">
-            <Button
-              type="text"
-              icon={<EditOutlined />}
-              onClick={() => handleEditAccount(record)}
-            />
+            <Button type="text" icon={<EditOutlined />} onClick={() => handleEditAccount(record)} />
           </Tooltip>
           <Tooltip title="Delete account">
             <Button
